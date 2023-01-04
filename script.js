@@ -90,7 +90,7 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  document.getElementById("passwordPromptBox").style.display = "block";
 }
 
 // Function for getting a random element from an array

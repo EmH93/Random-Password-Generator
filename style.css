@@ -118,6 +118,27 @@ button[disabled] {
   overflow: hidden;
 }
 
+#passwordPromptBox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: none;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 50px;
+  font-size: 14px;
+  text-align: start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px dashed #c0c7cf;
+  border-radius: 6px;
+  resize: none;
+  
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
