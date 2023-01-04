@@ -88,6 +88,7 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   document.getElementById("passwordPromptBox").style.display = "block";
@@ -98,13 +99,25 @@ function getRandom(arr) {
 return arr[Math.floor(Math.random()*arr.length)];
 }
 
-/*checking random element function works
-console.log(getRandom(upperCasedCharacters));*/
+//checking random element function works
+//console.log(getRandom(allCharacters));
 
 // Function to generate password with user input
 function generatePassword() {
-
+  var passwordLength = 20;
+  var pWord = "";
+  var allCharacters = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
+  var allCharactersString = allCharacters.toString()
+  var finalString = allCharactersString.replaceAll(',', '');
+  for (var i = 0; i <= passwordLength; i++) {
+  let randomNumber = Math.floor(Math.random() * finalString.length);
+  pWord += finalString.substring(randomNumber, randomNumber + 1);
+  }
+  return pWord;
 }
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
