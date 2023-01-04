@@ -102,9 +102,11 @@ return arr[Math.floor(Math.random()*arr.length)];
 //checking random element function works
 //console.log(getRandom(allCharacters));
 
+
+
 // Function to generate password with user input
 function generatePassword() {
-  var passwordLength = 20;
+  var passwordLength = Math.floor(Math.random() * (64 - 10 + 1) + 10);
   var pWord = "";
   var allCharacters = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
   var allCharactersString = allCharacters.toString()
