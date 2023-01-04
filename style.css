@@ -124,11 +124,13 @@ button[disabled] {
   appearance: none;
   border: none;
   display: none;
+  color: red;
   width: 100%;
+  height: 150px;
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   font-size: 14px;
   text-align: start;
   margin-top: 10px;
