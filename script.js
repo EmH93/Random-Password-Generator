@@ -102,8 +102,6 @@ return arr[Math.floor(Math.random()*arr.length)];
 //checking random element function works
 //console.log(getRandom(allCharacters));
 
-
-
 // Function to generate password with user input
 function generatePassword() {
   var passwordLength = Math.floor(Math.random() * (64 - 10 + 1) + 10);
@@ -115,7 +113,12 @@ function generatePassword() {
   let randomNumber = Math.floor(Math.random() * finalString.length);
   pWord += finalString.substring(randomNumber, randomNumber + 1);
   }
-  return pWord;
+  var pattern = new RegExp ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
+  if (pattern.test(pWord)){
+    return pWord;
+    } else {
+      alert('Click Generate Password again: Password does not meet requirements.');
+    }
 }
 
 
