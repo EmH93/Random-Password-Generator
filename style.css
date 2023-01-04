@@ -151,6 +151,10 @@ button[disabled] {
   #password {
     font-size: 1rem;
   }
+
+  #passwordPromptBox {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 500px) {
