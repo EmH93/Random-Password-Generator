@@ -89,7 +89,7 @@ var upperCasedCharacters = [
 ];
 
 //Connecting html DOM elements to script file
-const resultDOM = document.getElementById("result");
+const resultDOM = document.getElementById("password");
 const lengthDOM = document.getElementById("myRange");
 const incNumbersDOM = document.getElementById("numbers");
 const incSymbolsDOM = document.getElementById("symbols");
@@ -116,15 +116,6 @@ slider.oninput = function() {
     }
   }) ();
   getPasswordOptions();
-
-  // To check value of length when generate is clicked and to check if check boxes have been selected.
-  generateDOM.addEventListener('click', () => {
-    const length = +lengthDOM.value;
-    const yesLower = incLowerDOM.checked;
-    const yesUpper = incUpperDOM.checked;
-    const yesNumber = incNumbersDOM.checked;
-    const yesSymbol = incSymbolsDOM.checked;
-})
   
   // Function for getting a random element from an array
   function getRandom(arr) {
@@ -143,10 +134,27 @@ slider.oninput = function() {
     symb: getRandomSymbol
   };  
 
- /* // Function to generate password with user input
-  function generatePassword() {
-  
+  // To check value of length when generate is clicked and to check if check boxes have been selected.
+  generateDOM.addEventListener('click', () => {
+    const length = +lengthDOM.value;
+    const yesLower = incLowerDOM.checked;
+    const yesUpper = incUpperDOM.checked;
+    const yesNumber = incNumbersDOM.checked;
+    const yesSymbol = incSymbolsDOM.checked;
+
+  resultDOM.innerText = generatePassword(yesLower, yesUpper, yesNumber, yesSymbol, length);
+})
+
+  // Function to generate password with user input
+  function generatePassword(lower, upper, number, symbol, length) {
+    var pWord = "";
+  //setting up the individual object array for the boolean results of the checkboxes
+    const typesChosen = lower + upper + number + symbol;
+    const typesArr = [{lower}, {upper}, {number}, {symbol}];
+    
   }
+
+  /* 
 
   
   
