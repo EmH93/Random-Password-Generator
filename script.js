@@ -88,13 +88,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-//Connecting html elements to script file
-const length = document.getElementById("length");
-const incNumbers = document.getElementById("numbers");
-const incSymbols = document.getElementById("symbols");
-const incUpper = document.getElementById("upper");
-const incLower = document.getElementById("lower");
-
+//Connecting html DOM elements to script file
+const resultDOM = document.getElementById("result");
+const lengthDOM = document.getElementById("myRange");
+const incNumbersDOM = document.getElementById("numbers");
+const incSymbolsDOM = document.getElementById("symbols");
+const incUpperDOM = document.getElementById("upper");
+const incLowerDOM = document.getElementById("lower");
+const generateDOM = document.getElementById("generate");
 
 //slider configuration
 var slider = document.getElementById("myRange");
@@ -114,8 +115,16 @@ slider.oninput = function() {
         }
     }
   }) ();
-
   getPasswordOptions();
+
+  // To check value of length when generate is clicked and to check if check boxes have been selected.
+  generateDOM.addEventListener('click', () => {
+    const length = +lengthDOM.value;
+    const yesLower = incLowerDOM.checked;
+    const yesUpper = incUpperDOM.checked;
+    const yesNumber = incNumbersDOM.checked;
+    const yesSymbol = incSymbolsDOM.checked;
+})
   
   // Function for getting a random element from an array
   function getRandom(arr) {
@@ -132,28 +141,11 @@ slider.oninput = function() {
     upperC: getRandomUpper,
     num: getRandomNumber,
     symb: getRandomSymbol
-  };
+  };  
 
-  console.log(randomFunc);
-  
-
-  // Function to generate password with user input
+ /* // Function to generate password with user input
   function generatePassword() {
-    var passwordLength = Math.floor(Math.random() * (64 - 10 + 1) + 10);
-    var pWord = "";
-    var allCharacters = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
-    var allCharactersString = allCharacters.toString()
-    var finalString = allCharactersString.replaceAll(',', '');
-    for (var i = 0; i <= passwordLength; i++) {
-    let randomNumber = Math.floor(Math.random() * finalString.length);
-    pWord += finalString.substring(randomNumber, randomNumber + 1);
-    }
-    var pattern = new RegExp ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
-    if (pattern.test(pWord)){
-      return pWord;
-      } else {
-        alert('Click Generate Password again: Password does not meet requirements.');
-      }
+  
   }
 
   
@@ -170,4 +162,4 @@ slider.oninput = function() {
   }
   
   // Add event listener to generate button
-  generateBtn.addEventListener('click', writePassword);
+  generateBtn.addEventListener('click', writePassword); */
