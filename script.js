@@ -88,16 +88,18 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-
+//Connecting html elements to script file
 const length = document.getElementById("length");
 const incNumbers = document.getElementById("numbers");
 const incSymbols = document.getElementById("symbols");
 const incUpper = document.getElementById("upper");
+const incLower = document.getElementById("lower");
 
+
+//slider configuration
 var slider = document.getElementById("myRange");
 var output = document.getElementById("lengthNum");
 output.innerHTML = slider.value;
-
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
@@ -119,6 +121,20 @@ slider.oninput = function() {
   function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
   }
+  //Creating random variable for each array
+  getRandomLower = getRandom(lowerCasedCharacters);
+  getRandomUpper = getRandom(upperCasedCharacters);
+  getRandomNumber = getRandom(numericCharacters);
+  getRandomSymbol = getRandom(specialCharacters)
+
+  const randomFunc = {
+    lowerC: getRandomLower,
+    upperC: getRandomUpper,
+    num: getRandomNumber,
+    symb: getRandomSymbol
+  };
+
+  console.log(randomFunc);
   
 
   // Function to generate password with user input
