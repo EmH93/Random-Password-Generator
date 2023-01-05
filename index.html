@@ -26,16 +26,17 @@
         </div>
         <div class="card-footer">
           <div class="card-body">
-            <textarea
-              readonly
-              id="passwordPromptBox"
-              aria-label="Required information">Password generated should consist of:
-            - Between 10 and 64 characters in length.
-Password generated should contain the following characters:
-            - Lowercase and Uppercase
-            - Numeric
-            - Special characters ($@%&*, etc)
-Note: If password shows as "undefined" click Generate Password again.</textarea>
+            <div id="settings">
+                <div class="slidecontainer">
+                 <p>Select password length: <span id="lengthNum"></span></p><input type="range" min="10" max="64" value="50" class="slider" id="myRange">
+                <div>
+                <label for="upper">Include Uppercase</label>
+                    <input type="checkbox" id="upper" checked />   
+                <label for="numbers">Include Numbers</label>
+                    <input type="checkbox" id="numbers" checked />
+                <label for="symbols">Include Symbols</label>
+                    <input type="checkbox" id="symbols" checked />
+            </div>
             </div>
           <button onclick="getPasswordOptions()" id="generate" class="btn">Generate Password</button>
         </div>

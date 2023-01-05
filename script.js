@@ -89,51 +89,69 @@ var upperCasedCharacters = [
 ];
 
 
+const length = document.getElementById("length");
+const incNumbers = document.getElementById("numbers");
+const incSymbols = document.getElementById("symbols");
+const incUpper = document.getElementById("upper");
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("lengthNum");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
 // Function to prompt user for password options
-function getPasswordOptions() {
-  document.getElementById("passwordPromptBox").style.display = "block";
-}
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-return arr[Math.floor(Math.random()*arr.length)];
-}
-
-//checking random element function works
-//console.log(getRandom(allCharacters));
-
-// Function to generate password with user input
-function generatePassword() {
-  var passwordLength = Math.floor(Math.random() * (64 - 10 + 1) + 10);
-  var pWord = "";
-  var allCharacters = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
-  var allCharactersString = allCharacters.toString()
-  var finalString = allCharactersString.replaceAll(',', '');
-  for (var i = 0; i <= passwordLength; i++) {
-  let randomNumber = Math.floor(Math.random() * finalString.length);
-  pWord += finalString.substring(randomNumber, randomNumber + 1);
-  }
-  var pattern = new RegExp ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
-  if (pattern.test(pWord)){
-    return pWord;
-    } else {
-      alert('Click Generate Password again: Password does not meet requirements.');
+  var getPasswordOptions = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+                return alert("Select your password requirements then select Generate Password. Password should contain at least one character type.");
+        }
     }
-}
+  }) ();
 
+  getPasswordOptions();
+  
+  // Function for getting a random element from an array
+  function getRandom(arr) {
+  return arr[Math.floor(Math.random()*arr.length)];
+  }
+  
 
+  // Function to generate password with user input
+  function generatePassword() {
+    var passwordLength = Math.floor(Math.random() * (64 - 10 + 1) + 10);
+    var pWord = "";
+    var allCharacters = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
+    var allCharactersString = allCharacters.toString()
+    var finalString = allCharactersString.replaceAll(',', '');
+    for (var i = 0; i <= passwordLength; i++) {
+    let randomNumber = Math.floor(Math.random() * finalString.length);
+    pWord += finalString.substring(randomNumber, randomNumber + 1);
+    }
+    var pattern = new RegExp ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
+    if (pattern.test(pWord)){
+      return pWord;
+      } else {
+        alert('Click Generate Password again: Password does not meet requirements.');
+      }
+  }
 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+  
+  
+  // Get references to the #generate element
+  var generateBtn = document.querySelector('#generate');
+  
+  // Write password to the #password input
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector('#password');
+  
+    passwordText.value = password;
+  }
+  
+  // Add event listener to generate button
+  generateBtn.addEventListener('click', writePassword);
