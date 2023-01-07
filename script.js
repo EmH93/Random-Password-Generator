@@ -116,8 +116,30 @@ var upperCasedCharacters = [
   })
 
   // Function to generate password with user input
-  function generatePassword() {
-    return +lengthDOM.value;
+  function generatePassword(lower, upper, number, symbol, length) {
+    let generatedPassword = "";
+    let variationsCount = [lower, upper, number, symbol].length;
+
+    for (let i = 0; i < 50; i += variationsCount) {
+      if (lower) {
+        generatedPassword += getRandom(lowerCasedCharacters);
+      }
+      if (upper) {
+        generatedPassword += getRandom(upperCasedCharacters);
+      }
+      if (number) {
+        generatedPassword += getRandom(numericCharacters);
+      }
+      if (symbol) {
+        generatedPassword += getRandom(specialCharacters);
+      }
+      if (!lower && !upper && !number && !symbol) {
+       return "ERROR: you must choose at least one character type."
+      }
+    }
+    const finalPassword = generatedPassword.slice(0, length);
+
+    return finalPassword;
   }
  
   // Function to prompt user for password options
