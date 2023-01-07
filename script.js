@@ -120,7 +120,7 @@ var upperCasedCharacters = [
     let generatedPassword = "";
     let variationsCount = [lower, upper, number, symbol].length;
 
-    for (let i = 0; i < 50; i += variationsCount) {
+    for (let i = 0; i < 256; i += variationsCount) {
       if (lower) {
         generatedPassword += getRandom(lowerCasedCharacters);
       }
