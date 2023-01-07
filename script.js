@@ -88,77 +88,67 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-//Connecting html DOM elements to script file
-const resultDOM = document.getElementById("password");
-const lengthDOM = document.getElementById("myRange");
-const incNumbersDOM = document.getElementById("numbers");
-const incSymbolsDOM = document.getElementById("symbols");
-const incUpperDOM = document.getElementById("upper");
-const incLowerDOM = document.getElementById("lower");
-const generateDOM = document.getElementById("generate");
+  //Connecting html DOM elements to script file
+  const resultDOM = document.getElementById("password");
+  const lengthDOM = document.getElementById("myRange");
+  const incNumbersDOM = document.getElementById("numbers");
+  const incSymbolsDOM = document.getElementById("symbols");
+  const incUpperDOM = document.getElementById("upper");
+  const incLowerDOM = document.getElementById("lower");
+  const generateDOM = document.getElementById("generate");
 
-//slider configuration
-var slider = document.getElementById("myRange");
-var output = document.getElementById("lengthNum");
-output.innerHTML = slider.value;
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
 
-// Function to prompt user for password options
-  var getPasswordOptions = (function() {
-    var executed = false;
-    return function() {
-        if (!executed) {
-            executed = true;
-                return alert("Select your password requirements then select Generate Password. Password should contain at least one character type.");
-        }
-    }
-  }) ();
-  getPasswordOptions();
   
   // Function for getting a random element from an array
   function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
   }
-  //Creating random variable for each array
-  getRandomLower = getRandom(lowerCasedCharacters);
-  getRandomUpper = getRandom(upperCasedCharacters);
-  getRandomNumber = getRandom(numericCharacters);
-  getRandomSymbol = getRandom(specialCharacters)
-
-  const randomFunc = {
-    lowerC: getRandomLower,
-    upperC: getRandomUpper,
-    num: getRandomNumber,
-    symb: getRandomSymbol
-  };  
+  
+  // Variables that check if the user has input a value and checked the checkboxes
+  const lengthVal = +lengthDOM.value;
+  const yesLower = incLowerDOM.checked;
+  const yesUpper = incUpperDOM.checked;
+  const yesNumber = incNumbersDOM.checked;
+  const yesSymbol = incSymbolsDOM.checked;
 
   // To check value of length when generate is clicked and to check if check boxes have been selected.
   generateDOM.addEventListener('click', () => {
-    const length = +lengthDOM.value;
-    const yesLower = incLowerDOM.checked;
-    const yesUpper = incUpperDOM.checked;
-    const yesNumber = incNumbersDOM.checked;
-    const yesSymbol = incSymbolsDOM.checked;
+    lengthVal;
+    yesNumber;
+    yesUpper;
+    yesSymbol;
 
-  resultDOM.innerText = generatePassword(yesLower, yesUpper, yesNumber, yesSymbol, length);
-})
+  resultDOM.innerText = generatePassword(yesUpper, yesNumber, yesSymbol, lengthVal);
+  })
 
   // Function to generate password with user input
-  function generatePassword(lower, upper, number, symbol, length) {
-    var pWord = "";
-  //setting up the individual object array for the boolean results of the checkboxes
-    const typesChosen = lower + upper + number + symbol;
-    const typesArr = [{lower}, {upper}, {number}, {symbol}];
-    
+  function generatePassword() {
+    return lengthVal
+  }
+ 
+  // Function to prompt user for password options
+  var getPasswordOptions = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+          executed = true;
+              return alert("Select your password requirements then select Generate Password. Password should contain at least one character type.");
+      }
+    }
+  }) ();
+  getPasswordOptions();
+
+  //Password length slider configuration
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("lengthNum");
+  output.innerHTML = slider.value;
+  slider.oninput = function() {
+  output.innerHTML = this.value;
   }
 
-  /* 
 
-  
-  
-  // Get references to the #generate element
+
+  /* // Get references to the #generate element
   var generateBtn = document.querySelector('#generate');
   
   // Write password to the #password input
