@@ -103,27 +103,21 @@ var upperCasedCharacters = [
   function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
   }
-  
-  // Variables that check if the user has input a value and checked the checkboxes
-  const lengthVal = +lengthDOM.value;
-  const yesLower = incLowerDOM.checked;
-  const yesUpper = incUpperDOM.checked;
-  const yesNumber = incNumbersDOM.checked;
-  const yesSymbol = incSymbolsDOM.checked;
 
-  // To check value of length when generate is clicked and to check if check boxes have been selected.
+  // To check value of length when generate is clicked and to check if check boxes have been selected, also generates password based on choices
   generateDOM.addEventListener('click', () => {
-    lengthVal;
-    yesNumber;
-    yesUpper;
-    yesSymbol;
+    const lengthVal = +lengthDOM.value;
+    const yesLower = incLowerDOM.checked;
+    const yesNumber = incNumbersDOM.checked;
+    const yesUpper = incUpperDOM.checked;
+    const yesSymbol = incSymbolsDOM.checked;
 
-  resultDOM.innerText = generatePassword(yesUpper, yesNumber, yesSymbol, lengthVal);
+  resultDOM.innerText = generatePassword(yesLower, yesUpper, yesNumber, yesSymbol, lengthVal);
   })
 
   // Function to generate password with user input
   function generatePassword() {
-    return lengthVal
+    return +lengthDOM.value;
   }
  
   // Function to prompt user for password options
